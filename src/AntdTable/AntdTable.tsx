@@ -1,4 +1,4 @@
-import { SearchOutlined } from '@ant-design/icons'
+import { SearchOutlined, DeleteOutlined } from '@ant-design/icons'
 import type { InputRef, RadioChangeEvent } from 'antd'
 import { Button, ConfigProvider, Flex, Form, Input, Radio, Space, Switch, Table } from 'antd'
 import type { SizeType } from 'antd/es/config-provider/SizeContext'
@@ -164,7 +164,6 @@ const AntdProTable = () => {
           </div>
         )
       },
-      width: '12%',
     },
     {
       title: 'Полное имя',
@@ -180,6 +179,15 @@ const AntdProTable = () => {
       title: 'Email',
       dataIndex: 'email',
       editable: true,
+    },
+    {
+      title: 'Действие',
+      dataIndex: 'action',
+      fixed: 'right',
+      width: '100px',
+      render: (_, row) => {
+        return <Button type='primary' danger onClick={() => handleDelete(row.id)} icon={<DeleteOutlined />} />
+      },
     },
   ]
 
@@ -376,12 +384,13 @@ const AntdProTable = () => {
             </Form>
             <Table
               {...tableProps}
-              pagination={{ position: [top, bottom] }}
+              pagination={{ position: [top, bottom], pageSizeOptions: ['10', '50', '100', '500'] }}
               columns={tableColumns as ColumnTypes}
               dataSource={hasData ? dataSource : []}
               scroll={scroll}
               rowKey='id'
               style={{ width: '100%' }}
+              // virtual={true}
             />
           </Flex>
         </Flex>
