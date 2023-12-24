@@ -222,10 +222,6 @@ const AntdProTable = () => {
     setRowSelection(enable ? {} : undefined)
   }
 
-  const handleYScrollChange = (enable: boolean) => {
-    setYScroll(enable)
-  }
-
   const handleXScrollChange = (e: RadioChangeEvent) => {
     setXScroll(e.target.value)
   }
@@ -332,9 +328,6 @@ const AntdProTable = () => {
               </Form.Item>
               <Form.Item label='Checkbox'>
                 <Switch checked={!!rowSelection} onChange={handleRowSelectionChange} />
-              </Form.Item>
-              <Form.Item label='Fixed Header'>
-                <Switch checked={!!yScroll} onChange={handleYScrollChange} />
               </Form.Item>
               <Form.Item label='Has Data'>
                 <Switch checked={!!hasData} onChange={handleDataChange} />
