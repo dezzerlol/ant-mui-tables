@@ -1,0 +1,11 @@
+.old {
+  background-color: #d47483;
+  color: #1a3e72;
+  font-weight: 600;
+}
+
+.young {
+  background-color: rgba(157, 255, 118, 0.49);
+  color: #1a3e72;
+  font-weight: 600;
+}

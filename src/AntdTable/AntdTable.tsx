@@ -12,6 +12,7 @@ import Nav from '../Nav'
 import { generateRandomData } from '../generator'
 import { EditableCell, EditableRow } from './EditableCell'
 import { DataType } from './types'
+import styles from './table.module.css'
 
 type EditableTableProps = Parameters<typeof Table>[0]
 type TablePaginationPosition = NonNullable<TablePaginationConfig['position']>[number]
@@ -154,15 +155,13 @@ const AntdProTable = () => {
       editable: true,
       sorter: (a, b) => a.age - b.age,
       ...getColumnSearchProps('age'),
-      render(value) {
-        return (
-          <div
-            style={{
-              background: value > 50 ? '#d47483' : 'rgba(157, 255, 118, 0.49)',
-            }}>
-            {value}
-          </div>
-        )
+      render: (text, record) => {
+        return {
+          props: {
+            className: record.age > 50 ? styles.old : styles.young,
+          },
+          children: text,
+        }
       },
     },
     {
