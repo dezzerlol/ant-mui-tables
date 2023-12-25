@@ -266,7 +266,7 @@ const AntdProTable = () => {
     scroll.y = 600
   }
   if (xScroll) {
-    scroll.x = '100vw'
+    scroll.x = '1200px'
   }
 
   const tableColumns = columns.map((col) => ({
@@ -304,11 +304,14 @@ const AntdProTable = () => {
 
   return (
     <ConfigProvider locale={ru_RU}>
-      <Flex style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
+      <Flex style={{ height: '100%', display: 'flex', flexDirection: 'column', overflowY: 'auto' }}>
         <Nav />
-
-        <Flex align='center' justify='center' style={{ height: '100%' }}>
-          <Flex align='center' justify='center' vertical style={{ height: '100%', maxWidth: '1200px' }}>
+        <Flex align='center' justify='center'>
+          <Flex
+            align='center'
+            justify='center'
+            vertical
+            style={{ height: '100%', width: '100%', minWidth: '300px', maxWidth: '1200px' }}>
             Настройки:
             <Form layout='inline' className='components-table-demo-control-bar' style={{ marginBottom: 16 }}>
               <Form.Item label='Bordered'>
@@ -381,7 +384,6 @@ const AntdProTable = () => {
               dataSource={hasData ? dataSource : []}
               scroll={scroll}
               rowKey='id'
-              style={{ width: '100%' }}
               // virtual={true}
             />
           </Flex>
